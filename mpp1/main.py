@@ -1,16 +1,24 @@
-# This is a sample Python script.
+def read_from_file() -> list:
+    chosen_file = int(input("Which file are you going to choose: \n "
+                            "1.iris_test.txt \n 2.iris_training.txt \n"))
+    path = ""
+    list_of_flowers_to_return = []
+    if chosen_file == 1:
+        path = r"data/iris_test.txt"
+    elif chosen_file == 2:
+        path = r"data/iris_training.txt"
+    else:
+        print("Wrong input, are you really such a dummy???")
+    with open(path, "r") as file:
+        read_content = file.read()
+        data_in_list = read_content.split("\t")
+        
+    return []
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+def main():
+    data = read_from_file()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
