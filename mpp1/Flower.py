@@ -4,7 +4,16 @@ class Flower:
         self.flower_type = flower_type
 
     def calculate_distance(self, flower) -> float:
-        distance = 0
+        distance = 0.0
         for i in range(len(self.attributes)):
-            distance = distance + ((self.attributes[i] - flower.attributes[i]) ** (self.attributes[i] - flower.attributes[i]))
+            operation_minus = round(self.attributes[i] - flower.attributes[i], 5)
+            power = round(operation_minus*operation_minus, 5)
+            distance = round(distance + power, 5)
         return distance
+
+    def change_commas_to_dots(self):
+        for i in range(len(self.attributes)):
+            self.attributes[i] = float(str(self.attributes[i]).replace(",", "."))
+
+    def to_string(self):
+        print(str(self.attributes) + " " + self.flower_type)

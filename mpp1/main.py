@@ -22,16 +22,20 @@ def read_from_file(chosen_file) -> list:
     return list_of_flowers_to_return
 
 
+def reformat_data_commas_to_dots(data):
+    for flower in data:
+        flower.change_commas_to_dots()
 def main():
     training_data = read_from_file(2)
     test_data = read_from_file(1)
-    for flower in training_data:
-        print(flower.attributes, end=" ")
-        print(flower.flower_type)
-    print("---------------------")
-    for flower in test_data:
-        print(flower.attributes, end=" ")
-        print(flower.flower_type)
+    reformat_data_commas_to_dots(training_data)
+    reformat_data_commas_to_dots(test_data)
+    # how_many_neighbours = int(input('What will be the k value, in the kNN algorithm: '))
+    for current_flower_test in test_data:
+        distances = []
+        for current_flower_training in training_data:
+            distances.append(current_flower_test.calculate_distance(current_flower_training))
+        print(distances)
 
 
 if __name__ == '__main__':
