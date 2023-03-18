@@ -1,6 +1,6 @@
 class Flower:
-    def __init__(self, list_of_atributes, flower_type):
-        self.attributes = list_of_atributes
+    def __init__(self, list_of_attributes, flower_type):
+        self.attributes = list_of_attributes
         self.flower_type = flower_type
 
     def calculate_distance(self, flower) -> float:

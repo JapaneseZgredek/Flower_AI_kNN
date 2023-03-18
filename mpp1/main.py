@@ -1,4 +1,20 @@
 from Flower import Flower
+class Counter:
+    def __init__(self):
+        self.iris_setosa = 0
+        self.iris_versicolor = 0
+        self.iris_virginica = 0
+
+    def count(self, flower_type: str):
+        if flower_type is "Iris-setosa":
+            self.iris_setosa = self.iris_setosa + 1
+        elif flower_type is "Iris-versicolor":
+            self.iris_versicolor = self.iris_versicolor + 1
+        elif flower_type is "Iris-virginica":
+            self.iris_virginica = self.iris_virginica + 1
+
+    def which_one(self) -> int:
+        return max(self.iris_setosa, self.iris_versicolor, self.iris_virginica)
 def which_path(chosen_file):
     if chosen_file == 1:
         return r"data/iris_test.txt"
@@ -34,7 +50,9 @@ def main():
     for current_flower_test in test_data:
         distances = []
         for current_flower_training in training_data:
-            distances.append(current_flower_test.calculate_distance(current_flower_training))
+            distances.append((current_flower_test.calculate_distance(current_flower_training), current_flower_training.flower_type))
+        distances.sort(key=lambda a: a[0])
+
         print(distances)
 
 
